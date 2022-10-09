@@ -1,0 +1,25 @@
+#1- download x64dbg
+#2- download [detect it easy] https:\\ntinfo.biz and [ exeinfo pE ]
+====================================================================
+   F9       : Run
+   F8       : Step Over
+   F7 	    : Step Into a Call
+   Ctrl F9  : Execute till Return
+   Alt  F9  : Run to User Code
+=====================================
+Note:
+   eax = 4 bytes  === 32 bit
+   ax = 2 bytes === 16 bit
+   al =  1 byte: === 8 bits
+   FFFFFFFF = 4 bytes
+
+Using this:
+   [mov al,0]  you can use [xor eax,eax]
+
+will set eax to FFFFFF00
+
+Better way is:
+   xor eax,eax
+
+which sets eax to 00000000
+========================================

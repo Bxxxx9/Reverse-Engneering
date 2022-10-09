@@ -1,1 +1,4 @@
+# 1-[UPX] ==>{packer} Can't Change Code see img
+# 2-[loader] ==>{packer} need install dup2
+# 3-[Anti-Debuging] ==> {bp IsDebuggerPresent} or { use ScyllaHide}
 

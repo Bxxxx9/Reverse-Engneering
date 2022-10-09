@@ -1,0 +1,81 @@
+#1-[Anti Tamper] => {
+An exception occurred when decompiling this method (06000005)
+or,
+empty functions.
+EntryPoint VirtualProtect in cctor. Also same with Anti-Dump protection, but, Anti-Dump has visible contents within functions.
+Antidote: set bpx on module static. and step over, then dump koi. If there is no koi, then you shoud dump the exe. Reopen the exe in dnSpy. You can now see the contents of the functions. To be able to run it,  NOP the static module and dump the exe. Run this new exe.
+}
+============================================================
+#2-[Constants Protection]
+{
+Signature:
+You can see the Form and the functions. But the parameters of the function calls are obfuscated. In Name Protection, you can't even see the Form.
+Antidote:
+Use UnconfuserEX Tool:  ConfuserExConstantDecryptor
+}
+=============================================================
+#3-[Control Flow Protection]
+{
+Signature:
+cctor static module blank but  btn-click-handler has for(;;) and switch-case
+Antidote:   ConfuserExSwitchKiller
+}
+=============================================================
+#4-[Anti Dump Protection]
+{
+Signature:
+EntryPoint VirtualProtect in cctor. Also same with Anti-Tamper protection, but, Anti-Dump has visible contents within functions. Also, with Anti-Dump protection, after dumping, the modules are empty, except for the PE header.
+Antidote:  bpx on module static, don't step over, dump
+}
+=============================================================
+#5-[Reference Proxy Protection]
+{
+Signature:
+Form methods are obfuscated
+Antidote:  ConfuserExCallFixer
+}
+=============================================================
+#6-[Resources Protection:]
+{
+Signature:
+Open the Resources folder, the resources is empty.
+Antidote: bpx on static module. step over. dump the gibberish module. open it in dnspy. in Resources, right click, Raw Save resource.
+Goto back to the other program, right click Resources, create file resource, import the saved resource above.
+You can nop the static module and dump and the dump should work with the new resource.
+}
+=============================================================
+#7-[Name Protection:]
+{
+Signature:
+All names/strings everywhere are obfuscated \uxxxx
+In Constants Protection, you can see the Form and the functions. But the parameters of the function calls are obfuscated. In Name Protection, you can't even see the Form
+Antidote: 
+de4ot, then rename Resources/gibberish.resource to Form1.resources and dump.
+}
+=============================================================
+#8-[Do nothing for the protections listed below:]
+{
+(dnSpy takes care of them automatically)
+Anti IL Dasm
+Anti Debug Protection
+Invalid Metadata Protection
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
